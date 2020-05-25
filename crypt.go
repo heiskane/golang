@@ -18,7 +18,9 @@ func main() {
 	
 	if option {
 		for i, letter := range text {
-			if int(letter - rune(key[i % len(key)])) < 0 {
+			if int(letter) == 32 {
+				result += " "
+			} else if int(letter - rune(key[i % len(key)])) < 0 {
 				result += string(128 + (int(letter - rune(key[i % len(key)])) % 128))
 			} else {
 				result += string(int(letter - rune(key[i % len(key)])) % 128)
@@ -26,7 +28,11 @@ func main() {
 		}
 	} else {
 		for i, letter := range text {
-			result += string(int(letter + rune(key[i % len(key)])) % 128)
+			if int(letter) == 32 {
+				result += " "
+			} else {
+				result += string(int(letter + rune(key[i % len(key)])) % 128)
+			}
 		}
 	}
 	fmt.Println(result)

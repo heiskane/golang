@@ -21,9 +21,9 @@ func main() {
 			if int(letter) == 32 {
 				result += " "
 			} else if int(letter - rune(key[i % len(key)])) < 0 {
-				result += string(128 + (int(letter - rune(key[i % len(key)])) % 128))
+				result += string(128 + (letter - rune(key[i % len(key)])))
 			} else {
-				result += string(int(letter - rune(key[i % len(key)])) % 128)
+				result += string(letter - rune(key[i % len(key)]))
 			}
 		}
 	} else {

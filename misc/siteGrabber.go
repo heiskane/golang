@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"net/http"
 	"io/ioutil"
+	"flag"
 	b64 "encoding/base64"
 )
 
@@ -14,7 +15,12 @@ func encode(data string) string {
 }
 
 func main () {
-	resp, err := http.Get("http://example.com/")
+	var url string
+
+	flag.StringVar(&url, "u", "http://example.com/", "Url of the site to grab")
+	flag.Parse()
+
+	resp, err := http.Get(flag)
 	if err != nil {
 		fmt.Println(err)
 	}

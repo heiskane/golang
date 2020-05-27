@@ -1,0 +1,18 @@
+package main
+
+import "flag"
+import "fmt"
+import "os"
+
+func Usage() {
+        fmt.Fprintf(os.Stderr, "purposed - print given probability\n")
+        flag.PrintDefaults()
+}
+
+func main() {
+        var f float64
+        flag.Float64Var(&f, "p", 0.5, "probability of an event")
+        flag.Usage = Usage
+        flag.Parse()
+        fmt.Printf("Probability of something is %v%%\n", f*100)
+}

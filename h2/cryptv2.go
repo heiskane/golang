@@ -29,8 +29,9 @@ func decrypt(file string, key string) (string, error) {
 	for i, letter := range bytes {
 		result += string(((letter - (key[i % len(key)]) % 128) + 128) % 128)
 			// To make this work correctly with netavive numbers
-			// Use ( ( ( x % y ) + y ) % y )
+			// Use (((x % y) + y) % y)
 	}
+	result += "\n"
 	return result, nil
 }
 
@@ -53,8 +54,9 @@ func main() {
 	} else {
 		result, err = encrypt(file, key)
 	}
+
 	if err != nil {
 		fmt.Println("Failed:", err)
 	}
-	fmt.Printf("%v\n", result)
+	fmt.Printf("%v", result)
 }

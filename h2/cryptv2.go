@@ -32,7 +32,7 @@ func decrypt(file string) string {
 			if letter - key[i % len(key)] < 0 {
 				// The % isnt actually modulus in Go but the remainder
 				// To make it work correctly with netavive numbers
-				// Use ((x % y) + y)
+				// Use if x < 0 { (x % y) + y }
 				result += string((letter - (key[i % len(key)]) % 128) + 128)
 			} else {
 				result += string((letter - (key[i % len(key)])) % 128)

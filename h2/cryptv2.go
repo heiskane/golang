@@ -6,49 +6,55 @@ import (
 	"flag"
 )
 
-var result string
-var key string
-var option bool
-var file string
-
-func encrypt(file string) string {
+func encrypt(file string, key string) (string, error) {
 	bytes, err := ioutil.ReadFile(file)
 	if err != nil {
-		fmt.Println("Error Opening File:", err)
-	} else {
-		for i, letter := range bytes {
-			result += string((letter + key[i % len(key)]) % 128)
-		}
+		return "", err
 	}
-	return result
+
+	var result string
+	for i, letter := range bytes {
+		result += string((letter + key[i % len(key)]) % 128)
+	}
+	return result, nil
 }
 
-func decrypt(file string) string {
+func decrypt(file string, key string) (string, error) {
 	bytes, err := ioutil.ReadFile(file)
 	if err != nil {
-		fmt.Println("Error Opening File:", err)
-	} else {
-		for i, letter := range bytes {
-			result += string(((letter - (key[i % len(key)]) % 128) + 128) % 128)
-				// The % isnt actually modulus in Go but the remainder
-				// To make it work correctly with netavive numbers
-				// Use ( ( ( x % y ) + y ) % y )
-		}
+		return "", err
 	}
-	return result
+
+	var result string
+	for i, letter := range bytes {
+		result += string(((letter - (key[i % len(key)]) % 128) + 128) % 128)
+			// To make this work correctly with netavive numbers
+			// Use ( ( ( x % y ) + y ) % y )
+	}
+	return result, nil
 }
 
 func main() {
 	
+	var key string
+	var isDecrypt bool
+	var file string
+
 	flag.StringVar(&key, "k", "", "Encryption/Decryption key")
 	flag.StringVar(&file, "f", "", "File to encrypt the content of")
-	flag.BoolVar(&option, "d", false, "Decryption")
+	flag.BoolVar(&isDecrypt, "d", false, "Decryption")
 	
 	flag.Parse()
 
-	if option {
-		fmt.Printf("%v", decrypt(file))
+	var err error
+	var result string
+	if isDecrypt {
+		result, err = decrypt(file, key)
 	} else {
-		fmt.Printf("%v", encrypt(file))
+		result, err = encrypt(file, key)
 	}
+	if err != nil {
+		fmt.Println("Failed:", err)
+	}
+	fmt.Printf("%v\n", result)
 }

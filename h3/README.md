@@ -21,3 +21,4 @@ https://www.socketloop.com/tutorials/golang-get-rgba-values-of-each-image-pixel
  https://stackoverflow.com/questions/33186783/get-a-pixel-array-from-from-golang-image-image
  https://socketloop.com/tutorials/golang-convert-integer-to-binary-octal-hexadecimal-and-back-to-integer
  https://dev.to/andyhaskell/how-i-made-a-slick-personal-logo-with-go-s-standard-library-29j9
+ https://golang.org/pkg/image/

@@ -1,5 +1,7 @@
 # CryptV2
 
+This is my homework for the intensive Go programming course taught by Tero Karvinen http://terokarvinen.com/2020/go-programming-course-2020-w22/
+
 I was granted permission by the teacher to improve my previous script in following ways for this homework: Separate code into functions, Implement reading Files and Handle Errors. What it does now is it takes a file then reads its contents and encrypts them with a word.
 Example Usage: 
 ```

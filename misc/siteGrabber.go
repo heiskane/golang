@@ -20,7 +20,6 @@ func main () {
 	defer resp.Body.Close()
 
 	// https://stackoverflow.com/questions/38673673/access-http-response-as-string-in-go
-
 	body, err := ioutil.ReadAll(resp.Body)
 	if err != nil { 
 		fmt.Println(err)

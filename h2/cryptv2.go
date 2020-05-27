@@ -29,14 +29,10 @@ func decrypt(file string) string {
 		fmt.Println("Error Opening File:", err)
 	} else {
 		for i, letter := range bytes {
-			if letter - key[i % len(key)] < 0 {
+			result += string(((letter - (key[i % len(key)]) % 128) + 128) % 128)
 				// The % isnt actually modulus in Go but the remainder
 				// To make it work correctly with netavive numbers
-				// Use if x < 0 { (x % y) + y }
-				result += string((letter - (key[i % len(key)]) % 128) + 128)
-			} else {
-				result += string((letter - (key[i % len(key)])) % 128)
-			}
+				// Use ( ( ( x % y ) + y ) % y )
 		}
 	}
 	return result

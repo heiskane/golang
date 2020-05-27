@@ -16,7 +16,7 @@ func encode(data string) string {
 func main () {
 	var url string
 
-	flag.StringVar(&url, "u", "", "Url of the site to grab")
+	flag.StringVar(&url, "u", "http://example.com", "Url of the site to grab")
 	flag.Parse()
 
 	resp, err := http.Get(url)

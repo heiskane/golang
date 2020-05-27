@@ -47,9 +47,8 @@ func main() {
 	flag.Parse()
 
 	if option {
-		fmt.Printf(decrypt(file))
+		fmt.Printf("%v", decrypt(file))
 	} else {
-		// DO NOT USE "Printf" HERE OR IT CRAPS ITSELF BECAUSE OF "%" SIGNS
-		fmt.Println(encrypt(file))
+		fmt.Printf("%v", encrypt(file))
 	}
 }

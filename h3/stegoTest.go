@@ -27,7 +27,6 @@ func main() {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	//fmt.Println(data)
 
 	bounds := data.Bounds()
 
@@ -36,8 +35,7 @@ func main() {
 		for x := bounds.Min.X; x < bounds.Max.X; x++ {
 			//r, g, b, a := data.At(x, y).RGBA()
 			color := data.At(x, y)
-			fmt.Println(color)
-			//fmt.Printf("Red: %08b, Green: %08b, Blue: %08b, Alpha: %08b\n", (r / 257), (g/ 257), (b / 257), (a / 257))		
+			fmt.Printf("%T %08b %v\n", color, color, color)		
 		}
 	}
 }

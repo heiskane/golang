@@ -25,5 +25,9 @@ https://socketloop.com/tutorials/golang-convert-integer-to-binary-octal-hexadeci
 https://dev.to/andyhaskell/how-i-made-a-slick-personal-logo-with-go-s-standard-library-29j9
 https://golang.org/pkg/image/
 
-Image used for this example http://pngimg.com/download/30524
+Images used for these examples 
+
+http://pngimg.com/download/30524
+https://www.freepngs.com/cars-pngs?pgid=jc7xa93e-4cf4c91a-5461-11e8-a9ff-063f49e9a7e4
 ![Messy Mario](/img/mario_messy.png)
+![Messy Cars](/img/cars_messy.png)

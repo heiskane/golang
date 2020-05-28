@@ -1,2 +1,2 @@
 # Image Randomizer
-![Messy Mario](/img/messy_mario.png)
+![Messy Mario](/img/mario_messy.png)

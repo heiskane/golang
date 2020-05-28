@@ -1,5 +1,5 @@
 # Image Randomizer
-What this does is it randomizes the colors based on the number that is provided by the user. Currently only works with png files
+What this does is it "randomizes" the colors based on the number that is provided by the user. Works with png and jpeg now
 
 Example usage:
 

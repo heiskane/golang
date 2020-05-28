@@ -11,6 +11,7 @@ import (
 	"image/color"
 	"image/png"
 	// ^ https://golang.org/pkg/image/
+	_"image/jpeg"
 	"os"
 )
 

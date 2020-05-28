@@ -37,10 +37,6 @@ func recolor(data image.Image, bounds image.Rectangle) *image.RGBA {
 		for x := bounds.Min.X; x < bounds.Max.X; x++ {
 		colors := data.At(x, y)
 		r, g, b, a := colors.RGBA()
-		// Convert RGBA values to 8-bit
-		r = ((r / 257) * 1) % 255
-		g = ((g / 257) * 1) % 255
-		b = ((b / 257) * 1) % 255
 		newColor := color.RGBA{R: uint8(r), G: uint8(g), B: uint8(b), A: uint8(a)}
 		recolored.Set(x, y, newColor)
 		}

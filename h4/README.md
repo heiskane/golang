@@ -1,4 +1,6 @@
 # Image Randomizer
+This is my homework for the intensive Go programming course taught by Tero Karvinen http://terokarvinen.com/2020/go-programming-course-2020-w22/
+
 What this does is it "randomizes" the colors based on the number that is provided by the user. Works with png and jpeg now
 
 Example usage:

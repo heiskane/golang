@@ -31,19 +31,16 @@ func decodeImg(myImage string) image.Image {
 	return data
 }
 
-func recolor(data image.Image, bounds image.Rectangle) *image.RGBA {
-	//newColor := color.RGBA{R: 255, G: 255, B: 255, A: 255}
+func recolor(data image.Image, bounds image.Rectangle, number int) *image.RGBA {
 	recolored := image.NewRGBA(bounds)
 	for y := bounds.Min.Y; y < bounds.Max.Y; y++ {
 		for x := bounds.Min.X; x < bounds.Max.X; x++ {
 		colors := data.At(x, y)
 		r, g, b, a := colors.RGBA()
 		// Convert RGBA values to 8-bit
-		r = ((r / 257) * 2) % 255
-		g = ((g / 257) * 2) % 255
-		b = ((b / 257) * 2) % 255
-		a = 255
-		//fmt.Printf("%v, %v, %v\n", r, g, b)
+		r = ((r / 257) * uint32(number)) % 255
+		g = ((g / 257) * uint32(number)) % 255
+		b = ((b / 257) * uint32(number)) % 255
 		newColor := color.RGBA{R: uint8(r), G: uint8(g), B: uint8(b), A: uint8(a)}
 		recolored.Set(x, y, newColor)
 		}
@@ -55,22 +52,26 @@ func main() {
 
 	var image string
 	var output string
+	var number int
 
 	flag.StringVar(&image, "f", "", "PNG File to use")
 	flag.StringVar(&output, "o", "", "Output file")
+	flag.IntVar(&number, "n", 3, "Randomizer number")
 	flag.Parse()
 
+	// Decode image into something useable and define bounds
 	data := decodeImg(image)
 	bounds := data.Bounds()
-	//readPixels(bounds, data)
 	
+	// Create an outfile
 	out, err := os.Create(output)
 	if err != nil {
 		fmt.Println(err)
 	}
 	defer out.Close()
 	
-	recolored := recolor(data, bounds)
+	// Make the new image
+	recolored := recolor(data, bounds, number)
 	if err := png.Encode(out, recolored); err != nil {
 		fmt.Println(err)
 	}

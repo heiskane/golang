@@ -12,8 +12,6 @@ import (
 	"image/png"
 	// ^ https://golang.org/pkg/image/
 	"os"
-	//"strconv"
-	//"io/ioutil"
 )
 
 func decodeImg(myImage string) image.Image {
